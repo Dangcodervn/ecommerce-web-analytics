@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.env
+.venv/
+venv/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Data files (optional: comment out if you want to include CSVs)
+# Data/*.csv
+
+# Database exports
+*.sql.bak
+*.dump
+
+# Logs
+*.log
+
+# Temp files
+*.tmp
+*.bak
+~$*
