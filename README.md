@@ -28,40 +28,45 @@ ecommerce-web-analytics/
 
 ## Dataset Overview
 
-| Table | Description |
-|---|---|
-| `website_sessions` | User sessions with traffic source, UTM params, device type |
-| `website_pageviews` | Pages viewed per session |
-| `orders` | Order records linked to sessions |
-| `order_items` | Individual items per order |
-| `order_item_refunds` | Refund records |
-| `products` | Product catalog |
+| Table                | Description                                                |
+| -------------------- | ---------------------------------------------------------- |
+| `website_sessions`   | User sessions with traffic source, UTM params, device type |
+| `website_pageviews`  | Pages viewed per session                                   |
+| `orders`             | Order records linked to sessions                           |
+| `order_items`        | Individual items per order                                 |
+| `order_item_refunds` | Refund records                                             |
+| `products`           | Product catalog                                            |
 
 ---
 
 ## Analysis Areas
 
 ### 1. Traffic Analysis
+
 - Top traffic sources and channels
 - Paid vs. organic session breakdown
 - Session trends over time
 
 ### 2. Website Performance
+
 - Bounce rate by landing page
 - Top entry and exit pages
 - Device type comparison (desktop vs. mobile)
 
 ### 3. Conversion Funnel
+
 - Step-by-step funnel from landing page to order
 - Drop-off rates at each stage
 - Funnel comparison across traffic sources
 
 ### 4. Product Analysis
+
 - Best-selling products
 - Revenue per product
 - Cross-sell and product launch impact
 
 ### 5. Revenue Analysis
+
 - Monthly revenue and order volume
 - Refund rate and impact
 - Revenue by traffic channel
