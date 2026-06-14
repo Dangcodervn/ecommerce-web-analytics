@@ -87,37 +87,37 @@ BULK INSERT staging.products
 FROM 'D:\Data Self Learning\Extra Projects\Web_Analytics\Data\products.csv'
 WITH (FORMAT='CSV', FIRSTROW=2, FIELDTERMINATOR=',', ROWTERMINATOR='\n', TABLOCK);
 GO
-PRINT CONCAT('staging.products:            ', (SELECT COUNT(*) FROM staging.products),           ' rows');
+SELECT 'staging.products' AS table_name, COUNT(*) AS row_count FROM staging.products;
 
 BULK INSERT staging.website_sessions
 FROM 'D:\Data Self Learning\Extra Projects\Web_Analytics\Data\website_sessions.csv'
 WITH (FORMAT='CSV', FIRSTROW=2, FIELDTERMINATOR=',', ROWTERMINATOR='\n', TABLOCK);
 GO
-PRINT CONCAT('staging.website_sessions:    ', (SELECT COUNT(*) FROM staging.website_sessions),   ' rows');
+SELECT 'staging.website_sessions' AS table_name, COUNT(*) AS row_count FROM staging.website_sessions;
 
 BULK INSERT staging.website_pageviews
 FROM 'D:\Data Self Learning\Extra Projects\Web_Analytics\Data\website_pageviews.csv'
 WITH (FORMAT='CSV', FIRSTROW=2, FIELDTERMINATOR=',', ROWTERMINATOR='\n', TABLOCK);
 GO
-PRINT CONCAT('staging.website_pageviews:   ', (SELECT COUNT(*) FROM staging.website_pageviews),  ' rows');
+SELECT 'staging.website_pageviews' AS table_name, COUNT(*) AS row_count FROM staging.website_pageviews;
 
 BULK INSERT staging.orders
 FROM 'D:\Data Self Learning\Extra Projects\Web_Analytics\Data\orders.csv'
 WITH (FORMAT='CSV', FIRSTROW=2, FIELDTERMINATOR=',', ROWTERMINATOR='\n', TABLOCK);
 GO
-PRINT CONCAT('staging.orders:              ', (SELECT COUNT(*) FROM staging.orders),              ' rows');
+SELECT 'staging.orders' AS table_name, COUNT(*) AS row_count FROM staging.orders;
 
 BULK INSERT staging.order_items
 FROM 'D:\Data Self Learning\Extra Projects\Web_Analytics\Data\order_items.csv'
 WITH (FORMAT='CSV', FIRSTROW=2, FIELDTERMINATOR=',', ROWTERMINATOR='\n', TABLOCK);
 GO
-PRINT CONCAT('staging.order_items:         ', (SELECT COUNT(*) FROM staging.order_items),         ' rows');
+SELECT 'staging.order_items' AS table_name, COUNT(*) AS row_count FROM staging.order_items;
 
 BULK INSERT staging.order_item_refunds
 FROM 'D:\Data Self Learning\Extra Projects\Web_Analytics\Data\order_item_refunds.csv'
 WITH (FORMAT='CSV', FIRSTROW=2, FIELDTERMINATOR=',', ROWTERMINATOR='\n', TABLOCK);
 GO
-PRINT CONCAT('staging.order_item_refunds:  ', (SELECT COUNT(*) FROM staging.order_item_refunds),  ' rows');
+SELECT 'staging.order_item_refunds' AS table_name, COUNT(*) AS row_count FROM staging.order_item_refunds;
 GO
 
 -- Tổng kết

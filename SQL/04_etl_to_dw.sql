@@ -32,7 +32,7 @@ SELECT
 FROM date_seq
 OPTION (MAXRECURSION 2000);
 GO
-PRINT CONCAT('dim_date:     ', (SELECT COUNT(*) FROM dw.dim_date),    ' rows');
+SELECT 'dw.dim_date' AS table_name, COUNT(*) AS row_count FROM dw.dim_date;
 GO
 
 -- Step 2: dim_product
@@ -46,7 +46,7 @@ SELECT
     CAST(created_at AS DATE) AS launch_date
 FROM staging.products;
 GO
-PRINT CONCAT('dim_product:  ', (SELECT COUNT(*) FROM dw.dim_product),  ' rows');
+SELECT 'dw.dim_product' AS table_name, COUNT(*) AS row_count FROM dw.dim_product;
 GO
 
 -- Step 3: dim_device
@@ -57,7 +57,7 @@ INSERT INTO dw.dim_device (device_type)
 SELECT DISTINCT device_type
 FROM staging.website_sessions;
 GO
-PRINT CONCAT('dim_device:   ', (SELECT COUNT(*) FROM dw.dim_device),   ' rows');
+SELECT 'dw.dim_device' AS table_name, COUNT(*) AS row_count FROM dw.dim_device;
 GO
 
 -- Step 4: dim_channel — derived từ utm_source + http_referer
@@ -78,7 +78,7 @@ SELECT DISTINCT
     END AS channel_group
 FROM staging.website_sessions;
 GO
-PRINT CONCAT('dim_channel:  ', (SELECT COUNT(*) FROM dw.dim_channel),  ' rows');
+SELECT 'dw.dim_channel' AS table_name, COUNT(*) AS row_count FROM dw.dim_channel;
 GO
 
 -- Step 5: fact_sessions (grain: 1 row/session)
@@ -116,7 +116,7 @@ LEFT JOIN (
     FROM staging.orders
 ) o ON ws.website_session_id = o.website_session_id;
 GO
-PRINT CONCAT('fact_sessions:', (SELECT COUNT(*) FROM dw.fact_sessions), ' rows');
+SELECT 'dw.fact_sessions' AS table_name, COUNT(*) AS row_count FROM dw.fact_sessions;
 GO
 
 -- Step 6: fact_orders (grain: 1 row/order_item, bao gồm refund)
@@ -157,7 +157,7 @@ JOIN dw.dim_channel           dc
 JOIN dw.dim_device            dd ON ws.device_type        = dd.device_type
 LEFT JOIN staging.order_item_refunds r ON oi.order_item_id = r.order_item_id;
 GO
-PRINT CONCAT('fact_orders:  ', (SELECT COUNT(*) FROM dw.fact_orders),  ' rows');
+SELECT 'dw.fact_orders' AS table_name, COUNT(*) AS row_count FROM dw.fact_orders;
 GO
 
 -- Summary
