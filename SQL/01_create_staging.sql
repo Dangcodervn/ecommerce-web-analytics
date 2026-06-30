@@ -26,11 +26,11 @@ CREATE TABLE staging.website_sessions (
     website_session_id  INT            NOT NULL,
     created_at          DATETIME2      NOT NULL,
     user_id             INT            NOT NULL,
-    is_repeat_session   TINYINT        NOT NULL DEFAULT 0,  -- 0=new, 1=repeat
+    is_repeat_session   TINYINT        NOT NULL DEFAULT 0,
     utm_source          NVARCHAR(50)   NULL,
     utm_campaign        NVARCHAR(50)   NULL,
     utm_content         NVARCHAR(50)   NULL,
-    device_type         NVARCHAR(20)   NOT NULL,            -- 'desktop'|'mobile'
+    device_type         NVARCHAR(20)   NOT NULL,
     http_referer        NVARCHAR(255)  NULL,
     CONSTRAINT PK_stg_sessions PRIMARY KEY (website_session_id)
 );
@@ -63,7 +63,7 @@ CREATE TABLE staging.order_items (
     created_at      DATETIME2      NOT NULL,
     order_id        INT            NOT NULL,
     product_id      INT            NOT NULL,
-    is_primary_item TINYINT        NOT NULL DEFAULT 0,  -- 1=primary, 0=cross-sell
+    is_primary_item TINYINT        NOT NULL DEFAULT 0,
     price_usd       DECIMAL(8,2)   NOT NULL,
     cogs_usd        DECIMAL(8,2)   NOT NULL,
     CONSTRAINT PK_stg_order_items PRIMARY KEY (order_item_id)
@@ -90,7 +90,7 @@ GO
 SELECT 'staging.products' AS table_name, COUNT(*) AS row_count FROM staging.products;
 
 BULK INSERT staging.website_sessions
-FROM 'D:\Data Self Learning\Extra Projects\Web_Analytics\Data\website_sessions.csv'
+FROM 'D:\Data Self Learning\Extra Projects\Web_Analytics\Data\website_sesions.csv'
 WITH (FORMAT='CSV', FIRSTROW=2, FIELDTERMINATOR=',', ROWTERMINATOR='\n', TABLOCK);
 GO
 SELECT 'staging.website_sessions' AS table_name, COUNT(*) AS row_count FROM staging.website_sessions;

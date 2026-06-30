@@ -6,19 +6,52 @@ USE ecommerce_web_analytics;
 GO
 
 -- 1. NULL ở các cột quan trọng
-SELECT 'sessions - utm_source NULL (direct/organic)'  AS check_name, COUNT(*) AS cnt
-FROM staging.website_sessions WHERE utm_source IS NULL
+SELECT 'sessions - website_session_id NULL'            AS check_name, COUNT(*) AS cnt
+FROM staging.website_sessions WHERE website_session_id IS NULL
 UNION ALL
-SELECT 'sessions - device_type NULL',                  COUNT(*)
+SELECT 'sessions - created_at NULL',                                  COUNT(*)
+FROM staging.website_sessions WHERE created_at IS NULL
+UNION ALL
+SELECT 'sessions - user_id NULL',                                     COUNT(*)
+FROM staging.website_sessions WHERE user_id IS NULL
+UNION ALL
+SELECT 'sessions - is_repeat_session NULL',                           COUNT(*)
+FROM staging.website_sessions WHERE is_repeat_session IS NULL
+UNION ALL
+SELECT 'sessions - device_type NULL',                                 COUNT(*)
 FROM staging.website_sessions WHERE device_type IS NULL
 UNION ALL
-SELECT 'orders - website_session_id NULL',             COUNT(*)
+SELECT 'sessions - utm_source NULL (expected for direct/organic)',    COUNT(*)
+FROM staging.website_sessions WHERE utm_source IS NULL
+UNION ALL
+SELECT 'sessions - utm_campaign NULL (expected sometimes)',           COUNT(*)
+FROM staging.website_sessions WHERE utm_campaign IS NULL
+UNION ALL
+SELECT 'sessions - utm_content NULL (expected sometimes)',            COUNT(*)
+FROM staging.website_sessions WHERE utm_content IS NULL
+UNION ALL
+SELECT 'sessions - http_referer NULL (expected for direct)',          COUNT(*)
+FROM staging.website_sessions WHERE http_referer IS NULL
+UNION ALL
+SELECT 'sessions - utm_source literal ''NULL''',                      COUNT(*)
+FROM staging.website_sessions WHERE utm_source = 'NULL'
+UNION ALL
+SELECT 'sessions - utm_campaign literal ''NULL''',                    COUNT(*)
+FROM staging.website_sessions WHERE utm_campaign = 'NULL'
+UNION ALL
+SELECT 'sessions - utm_content literal ''NULL''',                     COUNT(*)
+FROM staging.website_sessions WHERE utm_content = 'NULL'
+UNION ALL
+SELECT 'sessions - http_referer literal ''NULL''',                    COUNT(*)
+FROM staging.website_sessions WHERE http_referer = 'NULL'
+UNION ALL
+SELECT 'orders - website_session_id NULL',                            COUNT(*)
 FROM staging.orders WHERE website_session_id IS NULL
 UNION ALL
-SELECT 'order_items - order_id NULL',                  COUNT(*)
+SELECT 'order_items - order_id NULL',                                 COUNT(*)
 FROM staging.order_items WHERE order_id IS NULL
 UNION ALL
-SELECT 'order_item_refunds - refund_amount NULL',      COUNT(*)
+SELECT 'order_item_refunds - refund_amount NULL',                     COUNT(*)
 FROM staging.order_item_refunds WHERE refund_amount_usd IS NULL;
 GO
 
